@@ -11,7 +11,7 @@ function Home() {
             padding: '20px'
         }}>
             <img 
-                src="https://i.imgur.com/AgE9Uww.png" // Coloca aqui a URL da foto real
+                src="https://imgur.com/a/ip6NLUW" // Coloca aqui a URL da foto real
                 alt="Foto da nossa família"
                 style={{
                     maxWidth: '90%',
@@ -21,9 +21,8 @@ function Home() {
                 }}
             />
             <h1 style={{ marginTop: '30px', color: '#333' }}>
-                Vai dar tudo certo, amor! ❤️
-                Alteração de teste
-            </h1>
+                Bora virar dev! 
+                        </h1>
         </div>
     );
 }
