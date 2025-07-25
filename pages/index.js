@@ -11,7 +11,7 @@ function Home() {
             padding: '20px'
         }}>
             <img 
-                src="https://imgur.com/a/ip6NLUW" // Coloca aqui a URL da foto real
+                src="https://i.imgur.com/g0AQIJX.png" // Coloca aqui a URL da foto real
                 alt="Foto da nossa família"
                 style={{
                     maxWidth: '90%',
