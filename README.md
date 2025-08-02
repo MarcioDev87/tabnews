@@ -1,2 +1,3 @@
 # tabnews
-Implementação e treino do curso.dev. 
+
+Implementação e treino do curso.dev.
