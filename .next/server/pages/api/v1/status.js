@@ -13,13 +13,43 @@ exports.id = "pages/api/v1/status";
 exports.ids = ["pages/api/v1/status"];
 exports.modules = {
 
+/***/ "dotenv/config":
+/*!********************************!*\
+  !*** external "dotenv/config" ***!
+  \********************************/
+/***/ ((module) => {
+
+module.exports = require("dotenv/config");
+
+/***/ }),
+
+/***/ "pg":
+/*!*********************!*\
+  !*** external "pg" ***!
+  \*********************/
+/***/ ((module) => {
+
+module.exports = require("pg");
+
+/***/ }),
+
+/***/ "(api)/./infra/database.js":
+/*!***************************!*\
+  !*** ./infra/database.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var pg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! pg */ \"pg\");\n/* harmony import */ var pg__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(pg__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var dotenv_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! dotenv/config */ \"dotenv/config\");\n/* harmony import */ var dotenv_config__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(dotenv_config__WEBPACK_IMPORTED_MODULE_1__);\n\n\nasync function query(queryObject) {\n    const client = new pg__WEBPACK_IMPORTED_MODULE_0__.Client({\n        host: process.env.POSTGRES_HOST,\n        port: process.env.POSTGRES_PORT,\n        user: process.env.POSTGRES_USER,\n        database: process.env.POSTGRES_DB,\n        password: process.env.POSTGRES_PASSWORD\n    });\n    await client.connect();\n    const result = await client.query(queryObject);\n    await client.end();\n    return result;\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n    query: query\n});\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9pbmZyYS9kYXRhYmFzZS5qcy5qcyIsIm1hcHBpbmdzIjoiOzs7Ozs7OztBQUE0QjtBQUNMO0FBRXZCLGVBQWVDLE1BQU1DLFdBQVcsRUFBRTtJQUNsQyxNQUFNQyxTQUFTLElBQUlILHNDQUFNQSxDQUFFO1FBQ3ZCSSxNQUFNQyxRQUFRQyxHQUFHLENBQUNDLGFBQWE7UUFDL0JDLE1BQU1ILFFBQVFDLEdBQUcsQ0FBQ0csYUFBYTtRQUMvQkMsTUFBTUwsUUFBUUMsR0FBRyxDQUFDSyxhQUFhO1FBQy9CQyxVQUFVUCxRQUFRQyxHQUFHLENBQUNPLFdBQVc7UUFDakNDLFVBQVVULFFBQVFDLEdBQUcsQ0FBQ1MsaUJBQWlCO0lBQzNDO0lBQ0MsTUFBTVosT0FBT2EsT0FBTztJQUNwQixNQUFNQyxTQUFTLE1BQU1kLE9BQU9GLEtBQUssQ0FBQ0M7SUFDbEMsTUFBTUMsT0FBT2UsR0FBRztJQUNoQixPQUFPRDtBQUNSO0FBRUEsaUVBQWU7SUFDWGhCLE9BQU9BO0FBQ1gsQ0FBQyIsInNvdXJjZXMiOlsid2VicGFjazovL3RhYm5ld3MvLi9pbmZyYS9kYXRhYmFzZS5qcz9lMzliIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IENsaWVudCB9IGZyb20gXCJwZ1wiO1xuaW1wb3J0IFwiZG90ZW52L2NvbmZpZ1wiO1xuXG5hc3luYyBmdW5jdGlvbiBxdWVyeShxdWVyeU9iamVjdCkge1xuY29uc3QgY2xpZW50ID0gbmV3IENsaWVudCAoe1xuICAgIGhvc3Q6IHByb2Nlc3MuZW52LlBPU1RHUkVTX0hPU1QsXG4gICAgcG9ydDogcHJvY2Vzcy5lbnYuUE9TVEdSRVNfUE9SVCxcbiAgICB1c2VyOiBwcm9jZXNzLmVudi5QT1NUR1JFU19VU0VSLFxuICAgIGRhdGFiYXNlOiBwcm9jZXNzLmVudi5QT1NUR1JFU19EQixcbiAgICBwYXNzd29yZDogcHJvY2Vzcy5lbnYuUE9TVEdSRVNfUEFTU1dPUkQsXG59KTtcbiBhd2FpdCBjbGllbnQuY29ubmVjdCgpO1xuIGNvbnN0IHJlc3VsdCA9IGF3YWl0IGNsaWVudC5xdWVyeShxdWVyeU9iamVjdClcbiBhd2FpdCBjbGllbnQuZW5kKCk7XG4gcmV0dXJuIHJlc3VsdDtcbn1cblxuZXhwb3J0IGRlZmF1bHQge1xuICAgIHF1ZXJ5OiBxdWVyeSxcbn0iXSwibmFtZXMiOlsiQ2xpZW50IiwicXVlcnkiLCJxdWVyeU9iamVjdCIsImNsaWVudCIsImhvc3QiLCJwcm9jZXNzIiwiZW52IiwiUE9TVEdSRVNfSE9TVCIsInBvcnQiLCJQT1NUR1JFU19QT1JUIiwidXNlciIsIlBPU1RHUkVTX1VTRVIiLCJkYXRhYmFzZSIsIlBPU1RHUkVTX0RCIiwicGFzc3dvcmQiLCJQT1NUR1JFU19QQVNTV09SRCIsImNvbm5lY3QiLCJyZXN1bHQiLCJlbmQiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./infra/database.js\n");
+
+/***/ }),
+
 /***/ "(api)/./pages/api/v1/status/index.js":
 /*!**************************************!*\
   !*** ./pages/api/v1/status/index.js ***!
   \**************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction status(req, res) {\n    res.status(200).json({\n        status: \"alunos do curso.dev s\\xe3o pessoas acima da m\\xe9dia\"\n    });\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (status);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvdjEvc3RhdHVzL2luZGV4LmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7QUFBQSxTQUFTQSxPQUFPQyxHQUFHLEVBQUVDLEdBQUcsRUFBRTtJQUN4QkEsSUFDR0YsTUFBTSxDQUFDLEtBQ1BHLElBQUksQ0FBQztRQUFFSCxRQUFRO0lBQWlEO0FBQ3JFO0FBRUEsaUVBQWVBLE1BQU1BLEVBQUMiLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly90YWJuZXdzLy4vcGFnZXMvYXBpL3YxL3N0YXR1cy9pbmRleC5qcz84NGRiIl0sInNvdXJjZXNDb250ZW50IjpbImZ1bmN0aW9uIHN0YXR1cyhyZXEsIHJlcykge1xuICByZXNcbiAgICAuc3RhdHVzKDIwMClcbiAgICAuanNvbih7IHN0YXR1czogXCJhbHVub3MgZG8gY3Vyc28uZGV2IHPDo28gcGVzc29hcyBhY2ltYSBkYSBtw6lkaWFcIiB9KTtcbn1cblxuZXhwb3J0IGRlZmF1bHQgc3RhdHVzO1xuIl0sIm5hbWVzIjpbInN0YXR1cyIsInJlcSIsInJlcyIsImpzb24iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(api)/./pages/api/v1/status/index.js\n");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _infra_database_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../infra/database.js */ \"(api)/./infra/database.js\");\n\nasync function status(req, res) {\n    const result = await _infra_database_js__WEBPACK_IMPORTED_MODULE_0__[\"default\"].query(\"SELECT 1 + 1 as soma;\");\n    console.log(result.rows);\n    res.status(200).json({\n        status: \"alunos do curso.dev s\\xe3o pessoas acima da m\\xe9dia\"\n    });\n}\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (status);\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKGFwaSkvLi9wYWdlcy9hcGkvdjEvc3RhdHVzL2luZGV4LmpzLmpzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQXFEO0FBRXJELGVBQWVDLE9BQU9DLEdBQUcsRUFBRUMsR0FBRyxFQUFFO0lBQzlCLE1BQU1DLFNBQVMsTUFBTUosZ0VBQWMsQ0FBQztJQUNwQ00sUUFBUUMsR0FBRyxDQUFDSCxPQUFPSSxJQUFJO0lBQ3ZCTCxJQUNHRixNQUFNLENBQUMsS0FDUFEsSUFBSSxDQUFDO1FBQUVSLFFBQVE7SUFBaUQ7QUFDckU7QUFFQSxpRUFBZUEsTUFBTUEsRUFBQyIsInNvdXJjZXMiOlsid2VicGFjazovL3RhYm5ld3MvLi9wYWdlcy9hcGkvdjEvc3RhdHVzL2luZGV4LmpzPzg0ZGIiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IGRhdGFiYXNlIGZyb20gXCIuLi8uLi8uLi8uLi9pbmZyYS9kYXRhYmFzZS5qc1wiO1xuXG5hc3luYyBmdW5jdGlvbiBzdGF0dXMocmVxLCByZXMpIHtcbiAgY29uc3QgcmVzdWx0ID0gYXdhaXQgZGF0YWJhc2UucXVlcnkoXCJTRUxFQ1QgMSArIDEgYXMgc29tYTtcIik7XG4gIGNvbnNvbGUubG9nKHJlc3VsdC5yb3dzKTtcbiAgcmVzXG4gICAgLnN0YXR1cygyMDApXG4gICAgLmpzb24oeyBzdGF0dXM6IFwiYWx1bm9zIGRvIGN1cnNvLmRldiBzw6NvIHBlc3NvYXMgYWNpbWEgZGEgbcOpZGlhXCIgfSk7XG59XG5cbmV4cG9ydCBkZWZhdWx0IHN0YXR1cztcbiJdLCJuYW1lcyI6WyJkYXRhYmFzZSIsInN0YXR1cyIsInJlcSIsInJlcyIsInJlc3VsdCIsInF1ZXJ5IiwiY29uc29sZSIsImxvZyIsInJvd3MiLCJqc29uIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///(api)/./pages/api/v1/status/index.js\n");
 
 /***/ })
 
