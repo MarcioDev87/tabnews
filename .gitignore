@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.next/
+.open-next/
+.wrangler/
+.dev.vars*
+!.dev.vars.example
+cloudflare-env.d.ts
+node_modules/
+.neon
+coverage/

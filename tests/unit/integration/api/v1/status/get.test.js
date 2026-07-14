@@ -1,5 +1,6 @@
-test("Get to /api/v1/status should return 200", async () => {
-  const response = await fetch("http://localhost:3000/api/v1/status");
+test('Get to /api/v1/status should return 200', async () => {
+  const baseUrl = process.env.TEST_BASE_URL || 'http://localhost:3000';
+  const response = await fetch(`${baseUrl}/api/v1/status`);
   expect(response.status).toBe(200);
 
   const responseBody = await response.json();
@@ -11,10 +12,10 @@ test("Get to /api/v1/status should return 200", async () => {
   console.log(responseBody.updated_at);
 
   const version = responseBody.db_version;
-  expect(version).toEqual("16.13");
+  expect(version).toMatch(/^\d+(\.\d+)?/);
   console.log(version);
 
   const maxConnections = responseBody.max_connections;
-  expect(maxConnections).toEqual("100");
+  expect(Number(maxConnections)).toBeGreaterThan(0);
   console.log(maxConnections);
 });

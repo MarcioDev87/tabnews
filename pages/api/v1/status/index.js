@@ -1,6 +1,18 @@
-import database from '/infra/database.js';
+import database from '../../../../infra/database.js';
 
 async function status(req, res) {
+  if (
+    process.env.NODE_ENV === 'development' &&
+    process.env.CLOUDFLARE_API_BASE_URL
+  ) {
+    const remoteResponse = await fetch(
+      new URL('/api/v1/status', process.env.CLOUDFLARE_API_BASE_URL),
+    );
+    const responseBody = await remoteResponse.json();
+
+    return res.status(remoteResponse.status).json(responseBody);
+  }
+
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query('SHOW server_version;');
