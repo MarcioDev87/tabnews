@@ -1,0 +1,4 @@
+NEXTJS_ENV=development
+# Hyperdrive supplies the production connection string. This fallback is only
+# used by a local Worker preview.
+DATABASE_URL=postgresql://USER:PASSWORD@HOST/DATABASE?sslmode=require

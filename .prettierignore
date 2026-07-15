@@ -1,0 +1,7 @@
+.agents/
+.next/
+.open-next/
+.wrangler/
+node_modules/
+coverage/
+skills-lock.json

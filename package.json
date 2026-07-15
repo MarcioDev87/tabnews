@@ -5,25 +5,39 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "npm run services:up && next dev",
+    "dev": "next dev",
+    "build": "next build",
+    "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
+    "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "services:up": "docker-compose -f infra/compose.yaml up -d",
     "services:down": "docker-compose -f infra/compose.yaml down",
     "services:stop": "docker-compose -f infra/compose.yaml stop",
     "lint:check": "prettier --check .",
     "lint:fix": "prettier --write .",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll",
+    "migration:create": "node-pg-migrate -m infra/migrations create",
+    "migration:up": "node-pg-migrate -m infra/migrations --envPath .env.development up",
+    "migration:down": "node-pg-migrate -m infra/migrations down"
   },
   "author": "Marcio",
   "license": "MIT",
   "dependencies": {
-    "dotenv": "^17.2.3",
-    "next": "13.1.6",
-    "pg": "^8.11.3",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "dotenv": "^16.4.4",
+    "next": "^16.2.10",
+    "node-pg-migrate": "^6.2.2",
+    "postgres": "^3.4.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
   },
   "devDependencies": {
-    "jest": "29.6.2",
-    "prettier": "^3.6.2"
+    "@opennextjs/cloudflare": "^1.20.1",
+    "jest": "^30.4.2",
+    "prettier": "^3.9.5",
+    "wrangler": "^4.110.0"
+  },
+  "overrides": {
+    "postcss": "^8.5.10"
   }
 }
